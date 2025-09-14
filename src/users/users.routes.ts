@@ -4,9 +4,9 @@ import { UnitUser, User } from "./user.interface";
 import { StatusCodes } from "http-status-codes";
 import * as database from "./user.database";
 
-export const userRouter = express.Router();
+export const userRoutes = express.Router();
 
-userRouter.get("/users", async (req: Request, res: Response) => {
+userRoutes.get("/users", async (req: Request, res: Response) => {
   try {
     const allUsers: UnitUser[] = await database.findAll();
 
@@ -24,7 +24,7 @@ userRouter.get("/users", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.get("/user/:id", async (req: Request, res: Response) => {
+userRoutes.get("/user/:id", async (req: Request, res: Response) => {
   try {
     const user: UnitUser = await database.findOne(req.params.id);
 
@@ -40,7 +40,7 @@ userRouter.get("/user/:id", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.post("/register", async (req: Request, res: Response) => {
+userRoutes.post("/register", async (req: Request, res: Response) => {
   try {
     const { username, email, password } = req.body;
 
@@ -66,7 +66,7 @@ userRouter.post("/register", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.post("/login", async (req: Request, res: Response) => {
+userRoutes.post("/login", async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
@@ -98,7 +98,7 @@ userRouter.post("/login", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.put("/user/:id", async (req: Request, res: Response) => {
+userRoutes.put("/user/:id", async (req: Request, res: Response) => {
   try {
     const { username, email, password } = req.body;
 
@@ -125,7 +125,7 @@ userRouter.put("/user/:id", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.delete("/user/:id", async (req: Request, res: Response) => {
+userRoutes.delete("/user/:id", async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
