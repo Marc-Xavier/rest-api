@@ -1,3 +1,4 @@
+// src/users/user.interface.ts
 export interface User {
   username: string;
   email: string;
